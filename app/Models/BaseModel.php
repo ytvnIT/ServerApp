@@ -28,6 +28,14 @@ abstract class BaseModel extends Model
             'updated_by',
         );
     }
+    protected function castToModel( $model, $model_name) {
+        $data=json_decode($model[0]);
+        $doc = new $model_name ();
+        foreach ($data as $key => $value) {
+            $doc->$key = $value;
+        }
+        return $doc;
+    }
 
     
 }

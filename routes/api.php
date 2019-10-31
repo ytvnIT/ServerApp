@@ -16,6 +16,10 @@ Route::post("signup",'Apis\\Authentication\\RegisterController@create');
 Route::get("/product", "Apis\\ProductController@create");
 Route::get("/main-product/{page}", "Apis\\MainProductController@getByPage");
 Route::get("/detail-product/{id}", "Apis\\DetailController@getDetail");
+
+//login
+Route::post("login",'Apis\\Authentication\\LoginController@login');
+
 Route::get("giangday/", "Apis\\DetailController@getGD");
 Route::get("diemdanhc/", "Apis\\DetailController@getDD");
 Route::get("diemdanh","Apis\\DetailController@insert");

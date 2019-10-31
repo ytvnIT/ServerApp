@@ -18,6 +18,7 @@ class hocvien extends BaseModel
             'GIOITINH',
             'NOISINH',
             'MALOP',
+            'PASSWORD'
         ));
     }
     public static function gethocvien($mahv) {
@@ -25,6 +26,18 @@ class hocvien extends BaseModel
             'hocvien' => hocvien::where('MALOP', $mahv)
             ->get(),
         ];
+    }
+
+    public function login($mahv, $password){
+        
+        $data=HocVien::where('MAHV',$mahv)->get();//sau khi select du lieu nay dang [{}] 
+        $hocvien=$this->castToModel($data, $this);//cast thanh user model
+        if (!is_null($user)) {
+            if (password_verify($password, $user->password)) {
+               return "success";
+            }
+        }
+        return 'fail';
     }
 }
 
