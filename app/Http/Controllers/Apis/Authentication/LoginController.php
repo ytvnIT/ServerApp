@@ -13,14 +13,14 @@ class LoginController extends ApiController
     public function login(){      
         
         $doc = new $this->model ();
-        $email="";
+        $mahv="";
         $password="";
       
-        if(array_key_exists("password",$_POST))
-            $password=$_POST['password'];
-        if(array_key_exists("mahv",$_POST))
-            $email=$_POST['mahv'];
-            
+        if(array_key_exists("password",$_GET))
+            $password=$_GET['password'];
+        if(array_key_exists("mahv",$_GET))
+            $mahv=$_GET['mahv'];
+        // return $password . "====" . $mahv;
         return response()->json($doc->login($mahv, $password));//neu dang nhap thanh cong thi tra ve "success" 
         
     }

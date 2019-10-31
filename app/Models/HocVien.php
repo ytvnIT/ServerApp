@@ -31,11 +31,15 @@ class hocvien extends BaseModel
     public function login($mahv, $password){
         
         $data=HocVien::where('MAHV',$mahv)->get();//sau khi select du lieu nay dang [{}] 
+            
         $hocvien=$this->castToModel($data, $this);//cast thanh user model
-        if (!is_null($user)) {
-            if (password_verify($password, $user->password)) {
-               return "success";
-            }
+        if (!is_null($hocvien)) {
+            // if (password_verify($password, $hocvien->password)) {
+            //    return "success";
+            // }
+            if ($password== $hocvien->PASSWORD) {
+                return "success";
+             }
         }
         return 'fail';
     }

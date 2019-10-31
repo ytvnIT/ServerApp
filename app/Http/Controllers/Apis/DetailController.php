@@ -26,9 +26,11 @@ class DetailController extends ApiController
     public function getGD() {
         // return response()->json("App\Models\giangday"::gethocvien());
         return response()->json(DB::table('giangday')->get());
+        
     }
     public function get(){
-        return response()->json("App\Models\giaovien"::gethocvien());
+        // return response()->json("App\Models\giaovien"::gethocvien());
+        return response()->json("tran van nhu y");
     }
     public function getDD() {
         $dd=DB::table('hocvien')
