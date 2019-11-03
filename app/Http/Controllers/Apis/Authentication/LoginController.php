@@ -16,10 +16,10 @@ class LoginController extends ApiController
         $mahv="";
         $password="";
       
-        if(array_key_exists("password",$_GET))
-            $password=$_GET['password'];
-        if(array_key_exists("mahv",$_GET))
-            $mahv=$_GET['mahv'];
+        if(array_key_exists("password",$_POST))
+            $password=$_POST['password'];
+        if(array_key_exists("mahv",$_POST))
+            $mahv=$_POST['mahv'];
         // return $password . "====" . $mahv;
         return response()->json($doc->login($mahv, $password));//neu dang nhap thanh cong thi tra ve "success" 
         

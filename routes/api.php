@@ -19,6 +19,8 @@ Route::get("/detail-product/{id}", "Apis\\DetailController@getDetail");
 
 //login
 Route::post("login",'Apis\\Authentication\\LoginController@login');
+Route::post("reset",'Apis\\Authentication\\ResetPasswordController@reset');
+Route::post("setpassword",'Apis\\Authentication\\ResetPasswordController@setNewPassword');
 
 Route::get("giangday/", "Apis\\DetailController@getGD");
 Route::get("diemdanhc/", "Apis\\DetailController@getDD");

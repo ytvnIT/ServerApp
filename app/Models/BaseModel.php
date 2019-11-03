@@ -29,11 +29,13 @@ abstract class BaseModel extends Model
         );
     }
     protected function castToModel( $model, $model_name) {
-        $data=json_decode($model[0]);
+        $data=json_decode($model);
         $doc = new $model_name ();
+
         foreach ($data as $key => $value) {
-            $doc->$key = $value;
+            $doc->$key = $value;    
         }
+
         return $doc;
     }
 
