@@ -14,7 +14,10 @@ class DiemDanh extends BaseModel
             'MAHV',
             'MAMH',
             'MALOP',
-            'DIEMDANH'
+            'SOBUOI',
+            'DIEMDANH',
+            'createdat',
+            'updatedat'
         ));
     }
     public static function gethocvien($mahv) {

@@ -32,6 +32,7 @@ class ResetPasswordController extends ApiController
             return 'success';
         return 'fail';
 
+        
     }
     public function reset(){
         if(array_key_exists("mahv",$_POST))
@@ -52,7 +53,8 @@ class ResetPasswordController extends ApiController
             $mail->isSMTP();                                            // Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'uitappteam@gmail.com';                     // SMTP username
+            $mail->Username   = 'uitappteam@gmail.com';     
+            $mail->Password='Eocomatkhau123';                // SMTP username
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
             $mail->SMTPSecure = "tls";        // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port       = 587;                                    // TCP port to connect to

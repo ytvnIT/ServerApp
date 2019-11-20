@@ -15,7 +15,8 @@ class MonHoc extends BaseModel
             'TENMH',
             'TCLT',
             'TCTH',
-            'MAKHOA'
+            'MAKHOA',
+            
         ));
     }
     public static function gethocvien() {

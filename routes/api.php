@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get("grade","Apis\AppController@getGrade");
 Route::post("signup",'Apis\\Authentication\\RegisterController@create');
 Route::get("/product", "Apis\\ProductController@create");
 Route::get("/main-product/{page}", "Apis\\MainProductController@getByPage");
@@ -21,10 +22,17 @@ Route::get("/detail-product/{id}", "Apis\\DetailController@getDetail");
 Route::post("login",'Apis\\Authentication\\LoginController@login');
 Route::post("reset",'Apis\\Authentication\\ResetPasswordController@reset');
 Route::post("setpassword",'Apis\\Authentication\\ResetPasswordController@setNewPassword');
+//endlogin/
+
+//diem danh
+Route::get("generateQR/{MAMH}", "Apis\AppController@generateQR");
+Route::get("diemdanh/{TOKEN}/{MAHV}", "Apis\AppController@diemDanh");
+
+//end diem danh
 
 Route::get("giangday/", "Apis\\DetailController@getGD");
 Route::get("diemdanhc/", "Apis\\DetailController@getDD");
-Route::get("diemdanh","Apis\\DetailController@insert");
+Route::get("diemdanhtest","Apis\\DetailController@insert");
 Route::get("get","Apis\\DetailController@get");
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
