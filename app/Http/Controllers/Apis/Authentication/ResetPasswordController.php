@@ -29,8 +29,8 @@ class ResetPasswordController extends ApiController
         
         $result=$this->model::setPassword($mahv, $password, $token);
         if($result==1)
-            return 'success';
-        return 'fail';
+            return 1;//thanh cong
+        return 0;//that bai
 
         
     }
@@ -42,7 +42,7 @@ class ResetPasswordController extends ApiController
         if($email!=null)
           $this->sendMail($email->EMAIL);
          else
-            return "Ma hoc vien khong ton tai";
+            return 0;// Ma hoc vien khong ton tai
     }
 
     public function sendMail($mailTo){   
@@ -71,6 +71,7 @@ class ResetPasswordController extends ApiController
             $mail->AltBody =  '<h2>UIT APP TEAM</h2> <br>Chúng tôi đang hỗ trợ bạn reset mật khẩu.<br>Đây là OTP của bạn: ' . $token . '<br> Trân trọng!<br> Cảm ơn';
 
             $mail->send();
+            return 1;
             // echo 'Message has been sent';
         } catch (Exception $e) {
             // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -27,36 +27,40 @@ class AppController extends ApiController
         //2. Tạo token, lưu db, tạo QR code
         $token = password_hash(rand(), PASSWORD_BCRYPT, $this->options);//token duoc hash voi chuoi theo format: MAHV + random_number
         $token .= "@" . $MAMH;
-        MonHoc::where("MAMH", $MAMH)->update(["TOKEN" => $token]);
+        MonHoc::where("MAMH", $MAMH)->update(["TOKEN" => $token]);//update token to db
         return QrCode::size(400)->generate($token);
 
     }
     public function diemDanh($TOKEN, $MAHV){
         $tokens = explode("@", $TOKEN);//split to get $MAMH
         $MAMH = end($tokens);
-      
-        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <120 ")//now - updatee_at: đơn vị second
-        ->where([ ["MAMH", $MAMH], ["TOKEN", $TOKEN]])
-        ->first();
-        if($string =="")
-            return 0;
-        //lay ra thong tin cac lan diem danh truoc
+
         $condition = [
             ['MAHV', '=', $MAHV],
             ['MAMH', '=', $MAMH]
         ];
+        if($this->isCheckedIn($condition))
+            return 2;
+      
+        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <30000 ")//now - updatee_at: đơn vị second
+        ->where([ ["MAMH", $MAMH], ["TOKEN", $TOKEN]])
+        ->first();
+        if($string =="")
+            return 0; //fail 
+        //lay ra thong tin cac lan diem danh truoc
+       
         $diemDanh =  DB::table('diemdanh')
                         ->select("DIEMDANH")
                         ->where($condition)->get();
+        if(count($diemDanh)==0)//kiểm tra xem sv có học lớp đó không?
+           return 0;
         //append gia tri moi vao
-        $diemDanh = $diemDanh[0]->DIEMDANH . "#" . now();
-        
+        $diemDanh = $diemDanh[0]->DIEMDANH . "#" . now();    
         DiemDanh::where($condition)
             ->update(["DIEMDANH" => $diemDanh]);
         DiemDanh::where($condition)
             ->increment('SOBUOI');
-        return 1;
-        // 
+        return 1; //succuss 
     }
     public function getGrade(){
         $mahv="";
@@ -71,6 +75,17 @@ class AppController extends ApiController
         return $obj;
     }
 
+    public function isCheckedIn($condition){
+        $updated_at = DiemDanh::select("updated_at")->where($condition)->first()->updated_at;
+        if($updated_at==null)
+            return false;
+        $now = Carbon::now();
+        $time = Carbon::createFromFormat("Y-m-d H:i:s", $updated_at );
+        $check = $now->diffInMinutes($time);
+        if ($check<1)
+            return true; 
+        return false;   
+    }
     public function checkTime($MAMH){
         //KIỂM TRA THỨ
         $dayofWeek  = Carbon::now()->dayOfWeek; //Lấy thứ hiện tại
@@ -93,6 +108,7 @@ class AppController extends ApiController
             return true;
         return false; 
     }
+
 
     function parseTime($session, $flag){
         switch($session){

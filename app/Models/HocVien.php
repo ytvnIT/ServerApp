@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
+use Carbon\Carbon;
 
 class hocvien extends BaseModel
 {
@@ -49,10 +50,10 @@ class hocvien extends BaseModel
         
         if (!is_null($hocvien)) {
             if (password_verify($password, $hocvien->PASSWORD)) {
-               return "success";
+               return (int)1;
             }
         }
-        return 'fail';
+        return (int) 0;
     }
 
     public static function getMail($mahv){
@@ -76,7 +77,11 @@ class hocvien extends BaseModel
     public static function setPassword($mahv, $password, $token){
         $self = new static;
         $password= password_hash($password, PASSWORD_BCRYPT, $self->options);
-        $token2 = HocVien::select('TOKEN')->where('MAHV', $mahv )->first();
+
+        $token2 = HocVien::select('TOKEN')->whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <120 ")//now - updatee_at: đơn vị second
+        ->where('MAHV', $mahv )
+        ->first();
+
         if($token2==null)
             return 0;
         if (!password_verify($token, $token2->TOKEN)){
