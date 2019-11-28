@@ -1,9 +1,12 @@
 
 
 
-DROP DATABASE IF EXISTS QUANLYGIAOVU;
-create database QUANLYGIAOVU;
-use QUANLYGIAOVU;
+-- DROP DATABASE IF EXISTS QUANLYGIAOVU;
+-- create database QUANLYGIAOVU;
+-- use QUANLYGIAOVU;
+DROP DATABASE IF EXISTS qlgv_test;
+create database qlgv_test;
+use qlgv_test;
 
 CREATE TABLE HOCVIEN(
 	MAHV		CHAR(10),
@@ -44,6 +47,10 @@ CREATE TABLE MONHOC
 	TCLT		INT,
 	TCTH		INT,
 	MAKHOA	VARCHAR(4),
+	THU 	INT   ,
+	TIET 	VARCHAR(10)  ,
+	TOKEN	VARCHAR(255)  ,
+	updated_at timestamp,
 	PRIMARY KEY(MAMH)
 );
 CREATE TABLE DIEUKIEN
@@ -142,22 +149,22 @@ INSERT INTO LOP VALUES('K11','Lop 1 khoa 1','K1108',11,'GV07');
 INSERT INTO LOP VALUES('K12','Lop 2 khoa 1','K1205',12,'GV09');					
 INSERT INTO LOP VALUES('K13','Lop 3 khoa 1','K1305',12,'GV14');					
 
-INSERT INTO MONHOC VALUES('THDC', 'Tin hoc dai cuong', 4, 1, 'KHMT');								
-INSERT INTO MONHOC VALUES('CTRR', 'Cau truc roi rac', 5, 0, 'KHMT');								
-INSERT INTO MONHOC VALUES('CSDL', 'Co so du lieu', 3, 1, 'HTTT');								
-INSERT INTO MONHOC VALUES('CTDLGT', 'Cau truc du lieu va giai thuat', 3, 1, 'KHMT');								
+INSERT INTO MONHOC VALUES('THDC', 'Tin hoc dai cuong', 4, 1, 'KHMT', 2, '123', null, null);								
+INSERT INTO MONHOC VALUES('CTRR', 'Cau truc roi rac', 5, 0, 'KHMT',2, '678', null, null);								
+INSERT INTO MONHOC VALUES('CSDL', 'Co so du lieu', 3, 1, 'HTTT', 4, '67890', null, null);								
+INSERT INTO MONHOC VALUES('CTDLGT', 'Cau truc du lieu va giai thuat', 3, 1, 'KHMT', 3, '123', null, null);								
 
 
 
-INSERT INTO MONHOC VALUES('PTTKTT', 'Phan tich thiet ke thuat toan', 3, 0, 'KHMT');								
-INSERT INTO MONHOC VALUES('DHMT', 'Do hoa may tinh', 3, 1, 'KHMT');								
-INSERT INTO MONHOC VALUES('KTMT', 'Kien truc may tinh', 3, 0, 'KTMT');								
-INSERT INTO MONHOC VALUES('TKCSDL', 'Thiet ke co so du lieu', 3, 1, 'HTTT');								
-INSERT INTO MONHOC VALUES('PTTKHTTT', 'Phan tich thiet ke he thong thong tin', 4, 1, 'HTTT');								
-INSERT INTO MONHOC VALUES('HDH', 'He dieu hanh', 4, 0, 'KTMT');								
-INSERT INTO MONHOC VALUES('NMCNPM', 'Nhap mon cong nghe phan mem', 3, 0, 'CNPM');								
-INSERT INTO MONHOC VALUES('LTCFW', 'Lap trinh C for win', 3, 1, 'CNPM');								
-INSERT INTO MONHOC VALUES('LTHDT', 'Lap trinh huong doi tuong', 3, 1, 'CNPM');								
+INSERT INTO MONHOC VALUES('PTTKTT', 'Phan tich thiet ke thuat toan', 3, 0, 'KHMT', 3, '678', null, null);								
+INSERT INTO MONHOC VALUES('DHMT', 'Do hoa may tinh', 3, 1, 'KHMT', 4, '123', null, null);								
+INSERT INTO MONHOC VALUES('KTMT', 'Kien truc may tinh', 3, 0, 'KTMT', 4, '678', null, null);								
+INSERT INTO MONHOC VALUES('TKCSDL', 'Thiet ke co so du lieu', 3, 1, 'HTTT', 5, '123', null, null);								
+INSERT INTO MONHOC VALUES('PTTKHTTT', 'Phan tich thiet ke he thong thong tin', 4, 1, 'HTTT', 5, '678', null, null);								
+INSERT INTO MONHOC VALUES('HDH', 'He dieu hanh', 4, 0, 'KTMT', 6, '123', null, null);								
+INSERT INTO MONHOC VALUES('NMCNPM', 'Nhap mon cong nghe phan mem', 3, 0, 'CNPM', 6, '678', null, null);								
+INSERT INTO MONHOC VALUES('LTCFW', 'Lap trinh C for win', 3, 1, 'CNPM', 7, '123', null, null);								
+INSERT INTO MONHOC VALUES('LTHDT', 'Lap trinh huong doi tuong', 3, 1, 'CNPM', 7, '678', null, null);								
 
 INSERT INTO GIAOVIEN VALUES('GV01','Ho Thanh Son','PTS','GS','Nam','1950/5/2','2004/1/11',5,2250000,'KHMT');										
 INSERT INTO GIAOVIEN VALUES('GV02','Tran Tam Thanh','TS','PGS','Nam','1965/12/17','2004/4/20',4.5,2025000,'HTTT');										

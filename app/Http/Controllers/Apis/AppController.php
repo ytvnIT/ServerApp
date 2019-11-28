@@ -26,6 +26,7 @@ class AppController extends ApiController
 
         //2. Tạo token, lưu db, tạo QR code
         $token = password_hash(rand(), PASSWORD_BCRYPT, $this->options);//token duoc hash voi chuoi theo format: MAHV + random_number
+        $token = str_replace("/", "",$token);
         $token .= "@" . $MAMH;
         MonHoc::where("MAMH", $MAMH)->update(["TOKEN" => $token]);//update token to db
         return QrCode::size(400)->generate($token);
@@ -42,7 +43,7 @@ class AppController extends ApiController
         if($this->isCheckedIn($condition))
             return 2;
       
-        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <30000 ")//now - updatee_at: đơn vị second
+        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <3000000 ")//now - updatee_at: đơn vị second
         ->where([ ["MAMH", $MAMH], ["TOKEN", $TOKEN]])
         ->first();
         if($string =="")
@@ -82,7 +83,7 @@ class AppController extends ApiController
         $now = Carbon::now();
         $time = Carbon::createFromFormat("Y-m-d H:i:s", $updated_at );
         $check = $now->diffInMinutes($time);
-        if ($check<1)
+        if ($check<15)
             return true; 
         return false;   
     }
