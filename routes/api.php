@@ -27,6 +27,7 @@ Route::post("setpassword",'Apis\\Authentication\\ResetPasswordController@setNewP
 //diem danh
 Route::get("generateQR/{MAMH}", "Apis\AppController@generateQR");
 Route::get("diemdanh/{TOKEN}/{MAHV}", "Apis\AppController@diemDanh");
+Route::get("checkInInfor/{MAHV}", "Apis\AppController@checkInInfor");
 
 //end diem danh
 

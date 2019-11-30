@@ -21,6 +21,7 @@ class AppController extends ApiController
     }
     public function generateQR($MAMH){
         //1. Kiểm tra thời điểm muốn điểm danh có đúng TKB hay không?
+        // return $this->checkTime($MAMH);
         if(!$this->checkTime($MAMH))//Hàm trả true thì hợp lệ và cho phép tạo QR ngược lại reject
             return "toang rùi!!!!";
 
@@ -70,7 +71,24 @@ class AppController extends ApiController
         }
         return $mahv;
     }
-    
+    function checkInInfor($MAHV){
+        $array = DiemDanh::where( [ ["MAHV", '=' , $MAHV], ['DIEMDANH', "<>", ""]] )->get();
+        $result = [];
+        foreach($array as $obj){
+            $diemdanhs = explode('#', $obj['DIEMDANH']);
+            array_splice($diemdanhs, 0, 1);
+            foreach($diemdanhs as $diemdanh){
+                $x = array(
+                    "MAHV" => $obj["MAHV"],
+                    "MAMH" => $obj["MAMH"],
+                    "time" => $diemdanh
+                );
+                array_push($result, $x);
+            } 
+        };
+        array_multisort(array_column($result, 'time'), SORT_DESC, $result);
+       return response()->json($result);
+    }
     function cast_to_model($input) {
         $obj = new $this->model();
         return $obj;
@@ -91,6 +109,7 @@ class AppController extends ApiController
         //KIỂM TRA THỨ
         $dayofWeek  = Carbon::now()->dayOfWeek; //Lấy thứ hiện tại
         $THU = (MonHoc::select("THU")->where("MAMH", $MAMH)->first())->THU-1; //Lấy thứ trên TKB
+        // $THU =(int)3;
         if($dayofWeek != $THU ) //so sánh hợp lệ
             return false;
 
