@@ -64,13 +64,13 @@ class AppController extends ApiController
             ->increment('SOBUOI');
         return 1; //succuss 
     }
-    public function getGrade(){
-        $mahv="";
-        if(array_key_exists("mahv", $_GET)){
-            $mahv=$_GET['mahv'];
-        }
-        return $mahv;
-    }
+    // public function getGrade(){
+    //     $mahv="";
+    //     if(array_key_exists("mahv", $_GET)){
+    //         $mahv=$_GET['mahv'];
+    //     }
+    //     return $mahv;
+    // }
     function checkInInfor($MAHV){
         $array = DiemDanh::where( [ ["MAHV", '=' , $MAHV], ['DIEMDANH', "<>", ""]] )->get();
         $result = [];
@@ -92,6 +92,29 @@ class AppController extends ApiController
     function cast_to_model($input) {
         $obj = new $this->model();
         return $obj;
+    }
+
+    //Timetable request
+    public function getTKB($MAHV) {
+        $dd=DB::table('hocvien')
+        ->join('giangday','giangday.MALOP','=','hocvien.MALOP')
+        ->join('monhoc','monhoc.MAMH','=','giangday.MAMH')
+        ->join('giaovien','giaovien.MAGV','=','giangday.MAGV')
+        ->select('monhoc.THU','monhoc.TENMH','giaovien.HOTEN','monhoc.TIET','monhoc.PHONG')
+        ->where('MAHV','=',$MAHV)
+        ->orderBy('monhoc.THU','asc')
+        ->get();
+        return response()->json($dd);
+    }
+
+    //Grade request
+    public function getGrade($MAHV){
+        $dd = DB::table('ketquathi')
+        //->select('MAMH, max(LANTHI) as lanthi')
+        ->where('MAHV','=',$MAHV)
+         ->groupBy('MAMH')
+         ->get(['MAMH',DB::raw('MAX(DIEM) as DIEM')]);
+        return response()->json($dd);
     }
 
     public function isCheckedIn($condition){
