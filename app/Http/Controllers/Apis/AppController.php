@@ -41,8 +41,8 @@ class AppController extends ApiController
             ['MAHV', '=', $MAHV],
             ['MAMH', '=', $MAMH]
         ];
-        if($this->isCheckedIn($condition))
-            return 2;
+        // if($this->isCheckedIn($condition))
+        //     return 2;
       
         $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <3000000 ")//now - updatee_at: đơn vị second
         ->where([ ["MAMH", $MAMH], ["TOKEN", $TOKEN]])
@@ -84,6 +84,7 @@ class AppController extends ApiController
                     "time" => $diemdanh
                 );
                 array_push($result, $x);
+                
             } 
         };
         array_multisort(array_column($result, 'time'), SORT_DESC, $result);
