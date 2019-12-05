@@ -28,7 +28,8 @@ Route::post("setpassword",'Apis\\Authentication\\ResetPasswordController@setNewP
 Route::get("generateQR/{MAMH}", "Apis\AppController@generateQR");
 Route::get("diemdanh/{TOKEN}/{MAHV}", "Apis\AppController@diemDanh");
 Route::get("checkInInfor/{MAHV}", "Apis\AppController@checkInInfor");
-
+Route::get("tkb/{MAHV}", "Apis\AppController@getTKB");
+Route::get("grade/{MAHV}", "Apis\AppController@getGrade");
 //end diem danh
 
 Route::get("giangday/", "Apis\\DetailController@getGD");

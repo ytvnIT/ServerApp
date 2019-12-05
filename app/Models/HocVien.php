@@ -38,11 +38,12 @@ class hocvien extends BaseModel
 
     public function login($mahv, $password){
         try {
-            $data=HocVien::where('MAHV',$mahv)->first();//sau khi select du lieu nay dang [{}] 
+             $data=HocVien::where('MAHV',$mahv)->first();//sau khi select du lieu nay dang [{}] 
         } 
         catch (Illuminate\Database\QueryException  $ex) {
             dd($ex->getMessage()); 
         }
+
         
         if($data==null)
             return 'fail';
