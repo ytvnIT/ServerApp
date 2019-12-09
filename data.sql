@@ -107,7 +107,7 @@ INSERT INTO KHOA VALUES('MTT', 'Mang va truyen thong', '2005/10/20', 'GV03');
 INSERT INTO KHOA VALUES('KTMT', 'Ky thuat may tinh', '2005/12/20', 'Null');		
 
 INSERT INTO HOCVIEN VALUES('17520001', 'Nguyen Van', 'A', '1986/1/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520001@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520002', 'Tran Ngoc', 'Han', '1986/3/14', 'Nu', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520002@gm.uit.edu.vnnn', null, null);								
+INSERT INTO HOCVIEN VALUES('17520002', 'Tran Ngoc', 'Han', '1999/3/14', 'Nu', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', 'uitappteam@gmail.com', null, null);								
 INSERT INTO HOCVIEN VALUES('17520003', 'Ha Duy', 'Lap', '1986/4/18', 'Nam', 'Nghe An', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520003@gm.uit.edu.vnnn', null, null);								
 INSERT INTO HOCVIEN VALUES('17520004', 'Tran Ngoc', 'Linh', '1986/3/30', 'Nu', 'Tay Ninh', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520004@gm.uit.edu.vnnn', null, null);								
 INSERT INTO HOCVIEN VALUES('17520005', 'Tran Minh', 'Long', '1986/2/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520005@gm.uit.edu.vnnn', null, null);								
