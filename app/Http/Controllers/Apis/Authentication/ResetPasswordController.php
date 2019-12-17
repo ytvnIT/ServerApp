@@ -35,10 +35,10 @@ class ResetPasswordController extends ApiController
         
     }
     public function reset(){
+        
         if(array_key_exists("mahv",$_POST))
             $this->mahv=$_POST['mahv'];
         $email=$this->model::getMail($this->mahv);
-
         if($email!=null)
           $this->sendMail($email->EMAIL);
          else

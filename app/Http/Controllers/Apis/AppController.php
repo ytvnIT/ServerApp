@@ -19,6 +19,9 @@ class AppController extends ApiController
     public function __construct() {
         // $this->model = "App\Models\hocvien";
     }
+    public function test(){
+        return response()->json("fdsf");
+    }
     public function generateQR($MAMH){
         //1. Kiểm tra thời điểm muốn điểm danh có đúng TKB hay không?
         // return $this->checkTime($MAMH);
@@ -110,6 +113,7 @@ class AppController extends ApiController
 
     //Grade request
     public function getGrade($MAHV){
+
         $dd = DB::table('ketquathi')
         //->select('MAMH, max(LANTHI) as lanthi')
         ->where('MAHV','=',$MAHV)
