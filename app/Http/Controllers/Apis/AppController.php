@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\MonHoc;
 use App\Models\DiemDanh;
+use App\Models\HocVien;
 use \App\Models\DetailProduct;
 use Carbon\Carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -111,12 +112,25 @@ class AppController extends ApiController
     //Grade request
     public function getGrade($MAHV){
         $dd = DB::table('ketquathi')
-        //->select('MAMH, max(LANTHI) as lanthi')
+        ->join('monhoc','monhoc.MAMH','=','ketquathi.MAMH')
+        ->select('ketquathi.MAMH','monhoc.TCLT','monhoc.TCTH','ketquathi.QT','ketquathi.TH','ketquathi.GK','ketquathi.CK','ketquathi.TB')
         ->where('MAHV','=',$MAHV)
-         ->groupBy('MAMH')
-         ->get(['MAMH',DB::raw('MAX(DIEM) as DIEM')]);
+        ->get();
         return response()->json($dd);
     }
+
+    //Info request
+
+    public function getInfo($MAHV){
+        //return HocVien::getName($MAHV);
+        $dd = DB::table('hocvien')
+        ->select('EMAIL','NGSINH','GIOITINH','NOISINH','MALOP')
+        ->where('MAHV','=',$MAHV)
+        ->get();
+        return response()->json($dd);
+    }
+
+
 
     public function isCheckedIn($condition){
         $updated_at = DiemDanh::select("updated_at")->where($condition)->first()->updated_at;
