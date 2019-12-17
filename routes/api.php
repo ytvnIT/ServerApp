@@ -31,6 +31,7 @@ Route::get("diemdanh/{TOKEN}/{MAHV}", "Apis\AppController@diemDanh");
 Route::get("checkInInfor/{MAHV}", "Apis\AppController@checkInInfor");
 Route::get("tkb/{MAHV}", "Apis\AppController@getTKB");
 Route::get("grade/{MAHV}", "Apis\AppController@getGrade");
+Route::get("info/{MAHV}", "Apis\AppController@getInfo");
 //end diem danh
 
 Route::get("giangday/", "Apis\\DetailController@getGD");
