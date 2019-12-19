@@ -18,6 +18,7 @@ CREATE TABLE HOCVIEN(
 	EMAIL VARCHAR(255),
 	TOKEN VARCHAR(255),
 	updated_at DATETIME,
+	ANH VARCHAR(100),
 	PRIMARY KEY(MAHV)
 );
 
@@ -106,46 +107,46 @@ INSERT INTO KHOA VALUES('CNPM', 'Cong nghe phan mem', '2005/6/7', 'GV04');
 INSERT INTO KHOA VALUES('MTT', 'Mang va truyen thong', '2005/10/20', 'GV03');							
 INSERT INTO KHOA VALUES('KTMT', 'Ky thuat may tinh', '2005/12/20', 'Null');		
 
-INSERT INTO HOCVIEN VALUES('17520001', 'Nguyen Van', 'A', '1986/1/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520001@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520002', 'Tran Ngoc', 'Han', '1999/3/14', 'Nu', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', 'uitappteam@gmail.com', null, null);								
-INSERT INTO HOCVIEN VALUES('17520003', 'Ha Duy', 'Lap', '1986/4/18', 'Nam', 'Nghe An', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520003@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520004', 'Tran Ngoc', 'Linh', '1986/3/30', 'Nu', 'Tay Ninh', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520004@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520005', 'Tran Minh', 'Long', '1986/2/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520005@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520006', 'Le Nhat', 'Minh', '1986/1/24', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520006@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520007', 'Nguyen Nhu', 'Nhut', '1986/1/27', 'Nam', 'Ha Noi', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520007@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520008', 'Nguyen Manh', 'Tam', '1986/2/27', 'Nam', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520008@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520009', 'Phan Thi Thanh', 'Tam', '1986/1/27', 'Nu', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520009@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520010', 'Le Hoai', 'Thuong', '1986/2/5', 'Nu', 'Can Tho', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520010@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('17520011', 'Le Ha', 'Vinh', '1986/12/25', 'Nam', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520011@gm.uit.edu.vnnn', null, null);								
+INSERT INTO HOCVIEN VALUES('17520001', 'Nguyen Van', 'A', '1986/1/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520001@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520002', 'Tran Ngoc', 'Han', '1999/3/14', 'Nu', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', 'uitappteam@gmail.com', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520003', 'Ha Duy', 'Lap', '1986/4/18', 'Nam', 'Nghe An', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520003@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520004', 'Tran Ngoc', 'Linh', '1986/3/30', 'Nu', 'Tay Ninh', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520004@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520005', 'Tran Minh', 'Long', '1986/2/27', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520005@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520006', 'Le Nhat', 'Minh', '1986/1/24', 'Nam', 'TpHCM', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520006@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520007', 'Nguyen Nhu', 'Nhut', '1986/1/27', 'Nam', 'Ha Noi', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520007@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520008', 'Nguyen Manh', 'Tam', '1986/2/27', 'Nam', 'Kien Giang', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520008@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520009', 'Phan Thi Thanh', 'Tam', '1986/1/27', 'Nu', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520009@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520010', 'Le Hoai', 'Thuong', '1986/2/5', 'Nu', 'Can Tho', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520010@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17520011', 'Le Ha', 'Vinh', '1986/12/25', 'Nam', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17520011@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
 
-INSERT INTO HOCVIEN VALUES('17521006', 'Nguyen Tri', 'Tam', '1986/1/27', 'Nu', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17521006@gm.uit.edu.vn', null, null);								
-INSERT INTO HOCVIEN VALUES('17521219', 'Pham Nhat', 'Tuan', '1986/2/5', 'Nu', 'Can Tho', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17521219@gm.uit.edu.vn', null, null);								
-INSERT INTO HOCVIEN VALUES('17521287', 'Tran Van Nhu', 'Y', '1986/12/25', 'Nam', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', 'uitappteam@gmail.com', null, null);								
+INSERT INTO HOCVIEN VALUES('17521006', 'Nguyen Tri', 'Tam', '1986/1/27', 'Nu', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17521006@gm.uit.edu.vn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17521219', 'Pham Nhat', 'Tuan', '1986/2/5', 'Nu', 'Can Tho', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '17521219@gm.uit.edu.vn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('17521287', 'Tran Van Nhu', 'Y', '1986/12/25', 'Nam', 'Vinh Long', 'K11', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', 'uitappteam@gmail.com', null, null,'/assets/avt.jpg');								
 
-INSERT INTO HOCVIEN VALUES('18520001', 'Nguyen Van', 'B', '1986/2/11', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520001@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520002', 'Nguyen Thi Kim', 'Duyen', '1986/1/18', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520002@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520003', 'Tran Thi Kim', 'Duyen', '1986/9/17', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520003@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520004', 'Truong My', 'Hanh', '1986/5/19', 'Nu', 'Dong Nai', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520004@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520005', 'Nguyen Thanh', 'Nam', '1986/4/17', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520005@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520006', 'Nguyen Thi Truc', 'Thanh', '1986/3/4', 'Nu', 'Kien Giang', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520006@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520007', 'Tran Thi Bich', 'Thuy', '1986/2/8', 'Nu', 'Nghe An', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520007@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520008', 'Huynh Thi Kim', 'Trieu', '1986/4/8', 'Nu', 'Tay Ninh', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520008@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520009', 'Pham Thanh', 'Trieu', '1986/2/23', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520009@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520010', 'Ngo Thanh', 'Tuan', '1986/2/14', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520010@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520011', 'Do Thi', 'Xuan', '1986/3/9', 'Nu', 'Ha Noi', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520011@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('18520012', 'Le Thi Phi', 'Yen', '1986/3/12', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520012@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520001', 'Nguyen Thi Kim', 'Cuc', '1986/6/9', 'Nu', 'Kien Giang', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520001@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520002', 'Truong Thi My', 'Hien', '1986/3/18', 'Nu', 'Nghe An', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520002@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520003', 'Le Duc', 'Hien', '1986/3/21', 'Nam', 'Tay Ninh', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520003@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520004', 'Le Quang', 'Hien', '1986/4/18', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520004@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520005', 'Le Thi', 'Huong', '1986/3/27', 'Nu', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520005@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520006', 'Nguyen Thai', 'Huu', '1986/3/30', 'Nam', 'Ha Noi', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520006@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520007', 'Tran Minh', 'Man', '1986/5/28', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520007@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520008', 'Nguyen Hieu', 'Nghia', '1986/4/8', 'Nam', 'Kien Giang', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520008@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520009', 'Nguyen Trung', 'Nghia', '1987/1/18', 'Nam', 'Nghe An', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520009@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520010', 'Tran Thi Hong', 'Tham', '1986/4/22', 'Nu', 'Tay Ninh', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520010@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520011', 'Tran Minh', 'Thuc', '1986/4/4', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520011@gm.uit.edu.vnnn', null, null);								
-INSERT INTO HOCVIEN VALUES('19520012', 'Nguyen Thi Kim', 'Yen', '1986/9/7', 'Nu', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520012@gm.uit.edu.vnnn', null, null);								
+INSERT INTO HOCVIEN VALUES('18520001', 'Nguyen Van', 'B', '1986/2/11', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520001@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520002', 'Nguyen Thi Kim', 'Duyen', '1986/1/18', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520002@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520003', 'Tran Thi Kim', 'Duyen', '1986/9/17', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520003@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520004', 'Truong My', 'Hanh', '1986/5/19', 'Nu', 'Dong Nai', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520004@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520005', 'Nguyen Thanh', 'Nam', '1986/4/17', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520005@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520006', 'Nguyen Thi Truc', 'Thanh', '1986/3/4', 'Nu', 'Kien Giang', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520006@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520007', 'Tran Thi Bich', 'Thuy', '1986/2/8', 'Nu', 'Nghe An', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520007@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520008', 'Huynh Thi Kim', 'Trieu', '1986/4/8', 'Nu', 'Tay Ninh', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520008@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520009', 'Pham Thanh', 'Trieu', '1986/2/23', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520009@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520010', 'Ngo Thanh', 'Tuan', '1986/2/14', 'Nam', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520010@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520011', 'Do Thi', 'Xuan', '1986/3/9', 'Nu', 'Ha Noi', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520011@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('18520012', 'Le Thi Phi', 'Yen', '1986/3/12', 'Nu', 'TpHCM', 'K12', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '18520012@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520001', 'Nguyen Thi Kim', 'Cuc', '1986/6/9', 'Nu', 'Kien Giang', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520001@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520002', 'Truong Thi My', 'Hien', '1986/3/18', 'Nu', 'Nghe An', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520002@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520003', 'Le Duc', 'Hien', '1986/3/21', 'Nam', 'Tay Ninh', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520003@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520004', 'Le Quang', 'Hien', '1986/4/18', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520004@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520005', 'Le Thi', 'Huong', '1986/3/27', 'Nu', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520005@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520006', 'Nguyen Thai', 'Huu', '1986/3/30', 'Nam', 'Ha Noi', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520006@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520007', 'Tran Minh', 'Man', '1986/5/28', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520007@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520008', 'Nguyen Hieu', 'Nghia', '1986/4/8', 'Nam', 'Kien Giang', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520008@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520009', 'Nguyen Trung', 'Nghia', '1987/1/18', 'Nam', 'Nghe An', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520009@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520010', 'Tran Thi Hong', 'Tham', '1986/4/22', 'Nu', 'Tay Ninh', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520010@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520011', 'Tran Minh', 'Thuc', '1986/4/4', 'Nam', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520011@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
+INSERT INTO HOCVIEN VALUES('19520012', 'Nguyen Thi Kim', 'Yen', '1986/9/7', 'Nu', 'TpHCM', 'K13', '$2y$10$yFbHOOgqvCR2HSdHiiqYweZ80GOfk0Ies9.XQer5eW8T3UfJUgmle', '19520012@gm.uit.edu.vnnn', null, null,'/assets/avt.jpg');								
 
 
 INSERT INTO LOP VALUES('K11','Lop 1 khoa 1','K1108',11,'GV07');					

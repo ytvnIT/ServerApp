@@ -43,7 +43,6 @@ class hocvien extends BaseModel
         catch (Illuminate\Database\QueryException  $ex) {
             dd($ex->getMessage()); 
         }
-
         
         if($data==null)
             return 'fail';
@@ -51,22 +50,22 @@ class hocvien extends BaseModel
         
         if (!is_null($hocvien)) {
             if (password_verify($password, $hocvien->PASSWORD)) {
-                //return Success($mahv);
-                return (int) 1;
+                return $this->Success($mahv);
+                // return (int) 1;
             }
         }
-        return (int) 0;
-        //return FAIL($mahv);
+        // return (int) 0;
+        return $this->FAIL($mahv);
     }
     public function Success($mahv){
-        $data = HocVien::select('HO','TEN')->where('MAHV',$mahv)->first();
+        $data = HocVien::select('HO','TEN', "ANH")->where('MAHV',$mahv)->first();
         $data->status="1";
         $data->TEN= $data->HO . " ".$data->TEN;
         unset($data->HO);
         return $data;
     }
     public function FAIL($mahv){
-        $data = array('status'=>'0','TEN'=>"");
+        $data = array('TEN'=>"", 'ANH' =>"", 'status'=>'0');
 
         return $data;
     }
