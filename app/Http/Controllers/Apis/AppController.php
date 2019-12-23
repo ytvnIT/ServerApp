@@ -27,7 +27,7 @@ class AppController extends ApiController
         //1. Kiểm tra thời điểm muốn điểm danh có đúng TKB hay không?
         // return $this->checkTime($MAMH);
         if(!$this->checkTime($MAMH))//Hàm trả true thì hợp lệ và cho phép tạo QR ngược lại reject
-            return "toang rùi!!!!";
+            return $MAMH . " không có tiết lúc này. Giảng viên kiểm tra lại thời khóa biểu rồi thử lại.";
 
         //2. Tạo token, lưu db, tạo QR code
         $token = password_hash(rand(), PASSWORD_BCRYPT, $this->options);//token duoc hash voi chuoi theo format: MAHV + random_number
@@ -37,7 +37,7 @@ class AppController extends ApiController
         return QrCode::size(400)->generate($token);
 
     }
-    public function diemDanh($TOKEN, $MAHV){
+    public function diemDanh($TOKEN, $MAHV, $MAC){
         $tokens = explode("@", $TOKEN);//split to get $MAMH
         $MAMH = end($tokens);
 
@@ -45,28 +45,31 @@ class AppController extends ApiController
             ['MAHV', '=', $MAHV],
             ['MAMH', '=', $MAMH]
         ];
-        // if($this->isCheckedIn($condition))
-        //     return 2;
-      
-        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <3000000 ")//now - updatee_at: đơn vị second
+
+        //lay ra thong tin cac lan diem danh truoc
+        $diemDanh =  DB::table('diemdanh')->select("DIEMDANH")->where($condition)->get();
+        if(count($diemDanh)==0)//kiểm tra xem sv có học lớp đó không?
+           return 4;// Bạn không thuộc lớp này
+
+        if($this->isCheckedIn($condition))
+            return 2;//Đã điểm danh
+   
+        if(HocVien::checkMac($MAHV, $MAC)=="5")
+            return 5;// Thiết bị này đã dùng để đăng nhập tài khoản khác
+        
+        $string = MonHoc::whereRaw("TIMEDIFF('" . Carbon::now('Asia/Ho_Chi_Minh') . "',updated_at)  <100 ")//now - updatee_at: đơn vị second
         ->where([ ["MAMH", $MAMH], ["TOKEN", $TOKEN]])
         ->first();
         if($string =="")
-            return 0; //fail 
-        //lay ra thong tin cac lan diem danh truoc
-       
-        $diemDanh =  DB::table('diemdanh')
-                        ->select("DIEMDANH")
-                        ->where($condition)->get();
-        if(count($diemDanh)==0)//kiểm tra xem sv có học lớp đó không?
-           return 0;
+            return 3; //fail Hết thời gian điểm danh
+        
         //append gia tri moi vao
         $diemDanh = $diemDanh[0]->DIEMDANH . "#" . now();    
         DiemDanh::where($condition)
             ->update(["DIEMDANH" => $diemDanh]);
         DiemDanh::where($condition)
             ->increment('SOBUOI');
-        return 1; //succuss 
+        return 1; //success 
     }
     // public function getGrade(){
     //     $mahv="";
@@ -107,19 +110,24 @@ class AppController extends ApiController
         ->join('giaovien','giaovien.MAGV','=','giangday.MAGV')
         ->select('monhoc.THU','monhoc.TENMH','giaovien.HOTEN','monhoc.TIET','monhoc.PHONG')
         ->where('MAHV','=',$MAHV)
-        ->orderBy('monhoc.THU','asc')
+        ->orderBy('monhoc.THU', 'asc')
+        ->orderBy('monhoc.TIET', 'asc')
         ->get();
         return response()->json($dd);
     }
 
     //Grade request
     public function getGrade($MAHV){
-
+        // return "s";
+        // return view('grade');
+        // return ["html" => view('grade')->render()];
         $dd = DB::table('ketquathi')
         ->join('monhoc','monhoc.MAMH','=','ketquathi.MAMH')
         ->select('ketquathi.MAMH','monhoc.TCLT','monhoc.TCTH','ketquathi.QT','ketquathi.TH','ketquathi.GK','ketquathi.CK','ketquathi.TB')
         ->where('MAHV','=',$MAHV)
         ->get();
+        // return view('grade', ["grades" => $dd]);
+        return ["html" => view('grade', ["grades" => $dd])->render()];
         return response()->json($dd);
     }
 
@@ -143,15 +151,17 @@ class AppController extends ApiController
         $now = Carbon::now();
         $time = Carbon::createFromFormat("Y-m-d H:i:s", $updated_at );
         $check = $now->diffInMinutes($time);
-        if ($check<15)
+        if ($check<5)
             return true; 
         return false;   
     }
     public function checkTime($MAMH){
         //KIỂM TRA THỨ
         $dayofWeek  = Carbon::now()->dayOfWeek; //Lấy thứ hiện tại
+        
         $THU = (MonHoc::select("THU")->where("MAMH", $MAMH)->first())->THU-1; //Lấy thứ trên TKB
         // $THU =(int)3;
+        return $dayofWeek . "compare with" . $THU;
         if($dayofWeek != $THU ) //so sánh hợp lệ
             return false;
 
@@ -161,7 +171,7 @@ class AppController extends ApiController
         $finishTime = Carbon::createFromFormat("H:i:s", $this->parseTime($TIET[-1], "finish") );//thời gian kết thúc 
         
         $now = Carbon::now();//lấy thời gian hiện tại
-        $now =  Carbon::createFromFormat("H:i:s", '13:31:00');
+        $now =  Carbon::createFromFormat("H:i:s", '13:31:00');// NHỚ SỬA LẠI Ở ĐÂY NHA
         
         $check1 = $now->diffForHumans($startTime);// return value of this line: Ex: 1 hour after
         $check2 = $now->diffForHumans($finishTime);

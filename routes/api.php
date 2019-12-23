@@ -27,12 +27,13 @@ Route::post("setpassword",'Apis\\Authentication\\ResetPasswordController@setNewP
 
 //diem danh
 Route::get("generateQR/{MAMH}", "Apis\AppController@generateQR");
-Route::get("diemdanh/{TOKEN}/{MAHV}", "Apis\AppController@diemDanh");
+Route::get("diemdanh/{TOKEN}/{MAHV}/{MAC}", "Apis\AppController@diemDanh");
 Route::get("checkInInfor/{MAHV}", "Apis\AppController@checkInInfor");
 Route::get("tkb/{MAHV}", "Apis\AppController@getTKB");
 Route::get("grade/{MAHV}", "Apis\AppController@getGrade");
 Route::get("info/{MAHV}", "Apis\AppController@getInfo");
 //end diem danh
+
 
 Route::get("giangday/", "Apis\\DetailController@getGD");
 Route::get("diemdanhc/", "Apis\\DetailController@getDD");

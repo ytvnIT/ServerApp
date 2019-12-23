@@ -13,7 +13,7 @@ class hocvien extends BaseModel
     ];
     public function __construct () {
         parent::__construct();
-
+        $this->timestamps = false;
         $this->table = "hocvien";
         $this->fillable = array_merge($this->fillable, array(
             'MAHV',
@@ -85,7 +85,7 @@ class hocvien extends BaseModel
     public static function setToken($mahv, $token){
         $self = new static;
         $token = password_hash($token, PASSWORD_BCRYPT, $self->options);
-        HocVien::where('MAHV', $mahv)->update(['TOKEN' => $token]);
+        HocVien::where('MAHV', $mahv)->update(['TOKEN' => $token, 'updated_at' => Carbon::now()]);
     }
     public static function setPassword($mahv, $password, $token){
         $self = new static;
@@ -101,15 +101,39 @@ class hocvien extends BaseModel
             return 0;
         }
         try {
-            $result = HocVien::where('MAHV' , $mahv)->update(['PASSWORD' => $password]);
+            $result = HocVien::where('MAHV' , $mahv)->update(['PASSWORD' => $password, 'updated_at' => Carbon::now()]);
             if($result==1)
-                HocVien::where('MAHV' , $mahv)->update(['TOKEN' => null]);
+                HocVien::where('MAHV' , $mahv)->update(['TOKEN' => null, 'updated_at' => Carbon::now()]);
             return $result;
 
         } 
         catch (Illuminate\Database\QueryException  $ex) {
             dd($ex->getMessage()); 
         }        
+    }
+    public static function checkMac($mahv, $MAC){
+        $now = Carbon::now();
+        $MACTIME = HocVien::select("MACTIME")->where("MAHV", $mahv)->first()->MACTIME;
+        //Trường hợp 1: User check in lần đầu, db chưa lưu mac, thì được pass luôn
+        if($MACTIME==null)
+        {
+            HocVien::where("MAHV", $mahv)->update(['MAC' => $MAC , "MACTIME" => $now]);
+            return '1';
+        }
+        //Trường hợp 1: User gửi MAC đúng với MAC trong db => pass luôn và update time
+        if(HocVien::select("MAC")->where([["MAHV", $mahv], ["MAC", $MAC]])->first() != null){
+            HocVien::where("MAHV", $mahv)->update(["MACTIME" => $now]);
+            return '1';
+        }
+        $time = Carbon::createFromFormat("Y-m-d H:i:s", $MACTIME );
+        $check = $now->diffInMinutes($time);
+        //Trường hợp 3: User gửi sai MAC, nghĩa là đang dùng thiết bị khác => đơi 15m kể từ updated_at gần nhất thì mới được cập nhật lại địa chỉ MAC mới, rồi mới được pass
+        if ($check>=1){
+            HocVien::where("MAHV", $mahv)->update(['MAC' => $MAC , "MACTIME" => $now]);
+            return '1'; 
+        }
+        //Trường hợp 4: Ngược lại với trường hợp 3, dưới 15m thì tèo
+        return '5';   
     }
 }
 
